@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Flask/Gevent WebSocket Test</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function(){
+           /* $('form').submit(function(event){
+                ws.send($('#data').val())
+                return false;
+            });*/
+                if ("WebSocket" in window) {
+                var loc = window.location, new_uri;
+                if (loc.protocol === "https:") {
+                    new_uri = "wss:";
+                } else {
+                    new_uri = "ws:";
+                }
+                new_uri += "//" + loc.host;
+                new_uri += loc.pathname + "/api";
+                ws = new WebSocket(new_uri);
+                ws.onmessage = function (msg) {
+                    $("#log").append("<p>"+msg.data+"</p>")
+                };
+            } else {
+                alert("WebSocket not supported");
+            }
+        });
+        
+        function advance(){
+	    ws.send($('#top').val())
+	    return true;
+        }
+        
+        function moonwalk(){
+	    ws.send($('#back').val())
+	    return true;
+        }
+        
+    </script>
+</head>
+<body>
+
+    <h1>COMMANDE ET J'OBEIRAI</h1>
+    
+   <!-- <form method='POST' id='0' action=''>
+        <div><input type='submit' id='top' onClick='advance()' value='Avancer'></div>
+    </form> 
+    
+    <form method='POST' id='1' action=''>
+        <div><input type='submit' id='back' onClick='moonwalk()' value='Reculer'></div>
+    </form> -->
+    
+    <div><input type='button' id='top' onClick='advance()' value='Avancer'></div>
+    <div><input type='button' id='back' onClick='moonwalk()' value='Reculer'></div>
+    
+</body>
+</html>
