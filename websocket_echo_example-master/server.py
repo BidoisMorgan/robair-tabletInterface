@@ -6,6 +6,10 @@ from flask import Flask, request, render_template
 app = Flask(__name__)
  
 @app.route('/')
+def reserver():
+    return render_template('Reservation.html')
+  
+@app.route('/commande')
 def index():
     return render_template('index2.html')
  

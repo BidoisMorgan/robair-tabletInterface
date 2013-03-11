@@ -5,10 +5,6 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function(){
-           /* $('form').submit(function(event){
-                ws.send($('#data').val())
-                return false;
-            });*/
                 if ("WebSocket" in window) {
                 var loc = window.location, new_uri;
                 if (loc.protocol === "https:") {
@@ -27,13 +23,9 @@
             }
         });
         
-        function advance(){
-	    ws.send($('#top').val())
-	    return true;
-        }
-        
-        function moonwalk(){
-	    ws.send($('#back').val())
+        function reserver(){
+	    ws.send($('#reserv').val())
+	    document.location.href="commande" 
 	    return true;
         }
         
@@ -41,18 +33,9 @@
 </head>
 <body>
 
-    <h1>Commande et j'obeirais</h1>
+    <h1>Reservation</h1>
     
-   <!-- <form method='POST' id='0' action=''>
-        <div><input type='submit' id='top' onClick='advance()' value='Avancer'></div>
-    </form> 
-    
-    <form method='POST' id='1' action=''>
-        <div><input type='submit' id='back' onClick='moonwalk()' value='Reculer'></div>
-    </form> -->
-    
-    <div><input type='button' id='top' onClick='advance()' value='Avancer'></div>
-    <div><input type='button' id='back' onClick='moonwalk()' value='Reculer'></div>
+    <div><input type='button' id='reserv' onClick='reserver()' value='Reserver'></div>
     
 </body>
 </html>
