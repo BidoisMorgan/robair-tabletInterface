@@ -1,34 +1,55 @@
 <html>
 	<head>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" charset="utf-8" type="text/javascript" src="/static/js/websockets.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" charset="utf-8" type="text/javascript" src="/static/js/websockets.js"></script>
 
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" type="text/css" />
-  <link rel="icon" type="image/png" href="/static/images/favicon.png" />
-	</head>
+		<link rel="icon" type="image/png" href="/static/images/favicon.png" />	
+	<script type="text/javascript" charset="utf-8" type="text/javascript" src="/static/js/clicDroitHead.js"></script>		
 
+	</head>
 	<body>
+	
+	<div id=ejs_context_box style="z-index:500;position:absolute;width:200px; border:1px solid #9D9DA1; background-color:#ffffff; font-family:Microsoft sans serif; font-size:12px; cursor:default; visibility:hidden;padding:3">
+		<script type="text/javascript" charset="utf-8" type="text/javascript" src="/static/js/clicDroit.js"></script>
+		</div>
+
 		<div id="container"></div>
 		<div id="info">
-			A library javascript to provide a virtual joystick on touchscreen.
-			inspired by this
-			from
-			<br/>
-			Touch the screen and move
-			  <div><input type='button' id='top' onClick='advance()' value='Avancer'></div>
-    <div><input type='button' id='back' onClick='moonwalk()' value='Reculer'></div>
+			cliquez sur l'écran, c'est magique.
+
+			<div>
+				<input type='button' id='top' onClick='goTop()' value='Avancer'>
+			</div>
+			<div>
+				<input type='button' id='back' onClick='goBack()' value='Reculer'>
+			</div>
 			works with mouse too as debug
 			<br/>
 			<span id="result"></span>
-		</div> 
-		
-<script type="text/javascript" src="/static/js/virtualjoystick.js"></script>
+		</div>
 
+		<script type="text/javascript" src="/static/js/virtualjoystick.js"></script>
 
 		<script>
+		console.log("touchscreen is", VirtualJoystick.touchScreenAvailable() ? "available" : "not available");
+		var joystick	= new VirtualJoystick({
+		container	: document.getElementById('container'),
+		mouseSupport	: true
+		});
+		setInterval(function(){
+		var outputEl	= document.getElementById('result');
+		outputEl.innerHTML	= '<b>Result:</b> '
+		+ ' dx:'+joystick.deltaX()
+		+ ' dy:'+joystick.deltaY()
+		+ (joystick.right()	? ' right'	: '')
+		+ (joystick.up()	? ' up'	: '')
+		+ (joystick.left()	? ' left'	: '')
+		+ (joystick.down()	? ' down' : '');	
 
+		}, 1/30 * 1000);
 		</script>
 	</body>
 </html>
