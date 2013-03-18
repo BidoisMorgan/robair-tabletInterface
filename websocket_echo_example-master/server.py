@@ -9,10 +9,10 @@ app = Flask(__name__)
 def reserver():
     return render_template('Reservation.html')
 
-@app.route('/virtualjoystick.js')
-def inde():
-    print "appel script"
-    return url_for('static', filename='static/js/virtualjoystick.js');
+#@app.route('/virtualjoystick.js')
+#def inde():
+ #   print "appel script"
+  #  return url_for('static', filename='static/js/virtualjoystick.js');
  
   
 @app.route('/commande')
