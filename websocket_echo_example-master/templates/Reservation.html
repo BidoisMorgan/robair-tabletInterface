@@ -1,41 +1,43 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-    <title>Flask/Gevent WebSocket Test</title>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" charset="utf-8">
-        $(document).ready(function(){
-                if ("WebSocket" in window) {
-                var loc = window.location, new_uri;
-                if (loc.protocol === "https:") {
-                    new_uri = "wss:";
-                } else {
-                    new_uri = "ws:";
-                }
-                new_uri += "//" + loc.host;
-                new_uri += loc.pathname + "/api";
-                ws = new WebSocket(new_uri);
-                ws.onmessage = function (msg) {
-                    $("#log").append("<p>"+msg.data+"</p>")
-                };
-            } else {
-                alert("WebSocket not supported");
-            }
-        });
-        
-        function reserver(){
-	    ws.send($('#reserv').val())
-	    document.location.href="commande" 
-	    return true;
-        }
-        
-    </script>
-</head>
-<body>
+	<head>
+		<title>Flask/Gevent WebSocket Test</title>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				if ("WebSocket" in window) {
+					var loc = window.location, new_uri;
+					if (loc.protocol === "https:") {
+						new_uri = "wss:";
+					} else {
+						new_uri = "ws:";
+					}
+					new_uri += "//" + loc.host;
+					new_uri += loc.pathname + "/api";
+					ws = new WebSocket(new_uri);
+					ws.onmessage = function(msg) {
+						$("#log").append("<p>" + msg.data + "</p>")
+					};
+				} else {
+					alert("WebSocket not supported");
+				}
+			});
 
-    <h1>Reservation</h1>
-    
-    <div><input type='button' id='reserv' onClick='reserver()' value='Reserver'></div>
-    
-</body>
+			function reserver() {
+				ws.send($('#reserv').val())
+				document.location.href = "commande"
+				return true;
+			}
+
+		</script>
+	</head>
+	<body>
+
+		<h1>Reservation</h1>
+
+		<div>
+			<input type='button' id='reserv' onClick='reserver()' value='Reserver'>
+		</div>
+
+	</body>
 </html>

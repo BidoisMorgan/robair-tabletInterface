@@ -13,12 +13,11 @@
 		<div id="container"></div>
 		<div id="info">
 			A library javascript to provide a virtual joystick on touchscreen.
-			inspired by this
-			from
+			inspired by this from
 			<br/>
 			Touch the screen and move
-			  <div><input type='button' id='top' onClick='advance()' value='Avancer'></div>
-    <div><input type='button' id='back' onClick='moonwalk()' value='Reculer'></div>
+			  <div><input type='button' id='top' onClick='goTop()' value='Avancer'></div>
+    <div><input type='button' id='back' onClick='goBack()' value='Reculer'></div>
 			works with mouse too as debug
 			<br/>
 			<span id="result"></span>
@@ -27,8 +26,27 @@
 <script type="text/javascript" src="/static/js/virtualjoystick.js"></script>
 
 
-		<script>
-
-		</script>
+	<script>
+	console.log("touchscreen is", VirtualJoystick.touchScreenAvailable() ? "available" : "not available");
+	var joystick	= new VirtualJoystick({
+	container	: document.getElementById('container'),
+	mouseSupport	: true
+	});
+	setInterval(function(){
+	var outputEl	= document.getElementById('result');
+	outputEl.innerHTML	= '<b>Result:</b> '
+	+ ' dx:'+joystick.deltaX()
+	+ ' dy:'+joystick.deltaY()
+	+ (joystick.right()	? ' right': '')
+	+ (joystick.up()	? ' up'	  : '')
+	+ (joystick.left()	? ' left' : '')
+	+ (joystick.down()	? ' down' : '');	
+	//Transmission des commande selon direction.
+	if(joystick.up()){goTop();}
+	else if(joystick.down()){goBack();}
+	     else if(joystick.right()){goRight();}
+	     	else if(joystick.left()) goLeft();
+	}, 1/30 * 1000);
+	</script>
 	</body>
 </html>

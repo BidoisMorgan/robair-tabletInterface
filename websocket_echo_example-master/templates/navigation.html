@@ -1,48 +1,51 @@
 <html>
 	<head>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" charset="utf-8" type="text/javascript" src="/static/js/websockets.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" charset="utf-8" type="text/javascript" src="/static/js/websockets.js"></script>
 
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" type="text/css" />
-  <link rel="icon" type="image/png" href="/static/images/favicon.png" />
+		<link rel="icon" type="image/png" href="/static/images/favicon.png" />
 	</head>
 
 	<body>
 		<div id="container"></div>
 		<div id="info">
-			A library javascript to provide a virtual joystick on touchscreen.
-			inspired by this from
 			<br/>
 			Touch the screen and move
-			  <div><input type='button' id='top' onClick='advance()' value='Avancer'></div>
-    <div><input type='button' id='back' onClick='moonwalk()' value='Reculer'></div>
+			<div>
+				<input type='button' id='top' onClick='goTop()' value='Avancer'>
+			</div>
+			<div>
+				<input type='button' id='back' onClick='goBack()' value='Reculer'>
+			</div>
 			works with mouse too as debug
 			<br/>
 			<span id="result"></span>
-		</div> 
-		
-<script type="text/javascript" src="/static/js/virtualjoystick.js"></script>
+		</div>
 
+		<script type="text/javascript" src="/static/js/virtualjoystick.js"></script>
 
-	<script>
-console.log("touchscreen is", VirtualJoystick.touchScreenAvailable() ? "available" : "not available");
-var joystick	= new VirtualJoystick({
-container	: document.getElementById('container'),
-mouseSupport	: true
-});
-setInterval(function(){
-var outputEl	= document.getElementById('result');
-outputEl.innerHTML	= '<b>Result:</b> '
-+ ' dx:'+joystick.deltaX()
-+ ' dy:'+joystick.deltaY()
-+ (joystick.right()	? ' right'	: '')
-+ (joystick.up()	? ' up'	: '')
-+ (joystick.left()	? ' left'	: '')
-+ (joystick.down()	? ' down' : '');	
-
-}, 1/30 * 1000);
-</script>
+		<script>
+			console.log("touchscreen is", VirtualJoystick.touchScreenAvailable() ? "available" : "not available");
+			var joystick = new VirtualJoystick({
+				container : document.getElementById('container'),
+				mouseSupport : true
+			});
+			setInterval(function() {
+				var outputEl = document.getElementById('result');
+				outputEl.innerHTML = '<b>Result:</b> ' + ' dx:' + joystick.deltaX() + ' dy:' + joystick.deltaY() + (joystick.right() ? ' right' : '') + (joystick.up() ? ' up' : '') + (joystick.left() ? ' left' : '') + (joystick.down() ? ' down' : '');
+				//directions commands.
+				if (joystick.up()) {
+					goTop();
+				} else if (joystick.down()) {
+					goBack();
+				} else if (joystick.right()) {
+					goRight();
+				} else if (joystick.left())
+					goLeft();
+			}, 1 / 30 * 1000);
+		</script>
 	</body>
 </html>
