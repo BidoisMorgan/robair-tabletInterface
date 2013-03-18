@@ -33,7 +33,15 @@
 </head>
 <body>
 
-    <h1>Reservation</h1>
+    <h1>COMMANDE ET J'OBEIRAI</h1>
+    
+   <!-- <form method='POST' id='0' action=''>
+        <div><input type='submit' id='top' onClick='advance()' value='Avancer'></div>
+    </form> 
+    
+    <form method='POST' id='1' action=''>
+        <div><input type='submit' id='back' onClick='moonwalk()' value='Reculer'></div>
+    </form> -->
     
     <div><input type='button' id='reserv' onClick='reserver()' value='Reserver'></div>
     
