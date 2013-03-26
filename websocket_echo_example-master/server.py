@@ -1,4 +1,4 @@
-#!/umkdirsr/bin/env python
+#!/usr/bin/env python
 from geventwebsocket.handler import WebSocketHandler
 from gevent.pywsgi import WSGIServer
 from flask import Flask, request, render_template
@@ -8,22 +8,15 @@ app = Flask(__name__)
 @app.route('/')
 def reserver():
     return render_template('Reservation.html')
-
-#@app.route('/virtualjoystick.js')
-#def inde():
- #   print "appel script"
-  #  return url_for('static', filename='static/js/virtualjoystick.js');
- 
   
 @app.route('/commande')
 def index():
     return render_template('navigation.html')
  
-
-@app.route('/commande/api')
-def goApi():
-    api();
-
+#@app.route('/commande/api')
+#def goApi():
+#    api()
+ 
 @app.route('/api')
 def api():
     if request.environ.get('wsgi.websocket'):
@@ -35,7 +28,7 @@ def api():
     return
   
 def test(msg):
-    print msg
+    print msg + ' toto'
  
 if __name__ == '__main__':
     address = "127.0.0.1", 5000
