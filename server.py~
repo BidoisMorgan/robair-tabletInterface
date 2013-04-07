@@ -11,7 +11,7 @@ app.secret_key = 'blablabla'
 
 @app.route('/')
 def reserver():
-    return render_template('Reservation.html')
+    return render_template('reservation.html')
   
 @app.route('/commande')
 def index():
