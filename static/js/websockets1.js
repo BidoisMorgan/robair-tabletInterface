@@ -20,21 +20,21 @@ $(document).ready(function() {
 
 //Sending methods for directions.
 function goTop() {
-	ws.send($('#top').val())
+	ws.send("top")
 	return true;
 }
 
 function goBack() {
-	ws.send($('#back').val())
+	ws.send("bottom")
 	return true;
 }
 
 function goRight() {
 	ws.send("right");
-//	return true;
+	return true;
 }
 
 function goLeft() {
 	ws.send("left");
-//	return true;
+	return true;
 }
