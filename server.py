@@ -59,7 +59,7 @@ def api():
 if __name__ == '__main__':
     address = "127.0.0.1", 5000
     http_server = WSGIServer(address, app, handler_class=WebSocketHandler)
-    tablet.main_loop()
+    #tablet.main_loop()
     print("Server running on http://%s:%d. Ctrl+C to quit" % address)
     http_server.serve_forever()
     
