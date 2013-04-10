@@ -51,7 +51,7 @@
 			
 			// Nombre de secondes
 			s = left;
-			updateDuo(6, 7, s);
+			//updateDuo(6, 7, s);
 			
 			options.callback(d, h, m, s);
 			
@@ -70,7 +70,7 @@
 	function init(elem, options){
 		elem.addClass('countdownHolder');
 
-		$.each(['Days','Hours','Minutes','Seconds'],function(i){
+		$.each(['Days','Hours','Minutes'],function(i){
 			$('<span class="count'+this+'">').html(
 				'<span class="position">\
 					<span class="digit static">0</span>\

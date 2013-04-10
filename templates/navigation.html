@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript" charset="utf-8" type="text/javascript" src="/static/js/websockets1.js"></script>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
@@ -8,23 +8,19 @@
 		<link rel="icon" type="image/png" href="/static/images/favicon.png" />
 		
 		<link rel="stylesheet" href="static/jquerry/jquery.countdown.css" />
-		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 		<script src="static/jquerry/jquery.countdown.js"></script>
 		<script src="static/js/compteur.js"></script>
-	
-		
 		<script type="text/javascript" language="javascript">
+		
 			function position(e) {
 				x = (navigator.appName.substring(0, 3) == "Net") ? e.pageX : event.x + document.body.scrollLeft;
 				y = (navigator.appName.substring(0, 3) == "Net") ? e.pageY : event.y + document.body.scrollTop;
-				document.title = "Souris X:" + x + " / Y:" + y;
+				document.title = "RobAIR navigation";
 			}
 		</script>
-	</head>
-
-	<body>
+	</head>	
+ 	<body onresize="window.location.reload();"> 
 		<div id="countdown"></div>
-		<!--<p id="note"></p>  -->
 		<script type="text/javascript" language="javascript">
 			if (navigator.appName.substring(0, 3) == "Net")
 				document.captureEvents(Event.MOUSEMOVE);
@@ -33,7 +29,6 @@
 		</script>
 			<div id="container"></div>
 			<div id="info">
-			<span id="result"></span>
 		</div>
 		<script type="text/javascript" src="/static/js/virtualjoystick14.js"></script>
 
@@ -60,3 +55,5 @@
 
 	</body>
 </html>
+
+

@@ -16,17 +16,13 @@
 	);
 }
 
-/**
-vous pouvez masquer une partie du compte � rebours ici
- */
-
 /**.countDays{  display:none !important; }*/
 .countDiv0{ /* display:none !important;*/ }
 .countHours{}
 .countDiv1{}
 .countMinutes{}
-.countDiv2{}
-.countSeconds{}
+.countDiv2{display:none !important;}
+/**.countSeconds{}*/
 
 .countDiv{display:inline-block;width:16px;height:1.6em;position:relative;}
 .countDiv:before,
@@ -35,3 +31,5 @@ vous pouvez masquer une partie du compte � rebours ici
 	content:'';
 }
 .countDiv:after{top:0.9em;}
+
+
